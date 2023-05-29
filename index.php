@@ -36,4 +36,21 @@ define("ES_VALIDO",true);
 //o "nueva" forma
 
 const texto = "TEzto";
-    
+
+//todo Tipos de datos
+
+// Bolean
+$logIn= true;
+var_dump($logIn);
+
+// Int
+$numero = 1;
+var_dump($numero);
+
+//Floats
+$float = 1.02;
+var_dump($float);
+
+//Str
+$cadena = "Juan";
+var_dump($cadena);
