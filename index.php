@@ -54,3 +54,73 @@ var_dump($float);
 //Str
 $cadena = "Juan";
 var_dump($cadena);
+
+
+//? Número y operadores
+
+$numero1=20;
+$numero2=30;
+$numero3=30;
+$numero4="30";
+
+//* Operador mayor que $numero2
+var_dump($numero1 > $numero2);
+echo "<br/>";
+
+//* Operador menor que $numero2
+var_dump($numero1 < $numero2);
+echo "<br/>";
+
+//* Operador mayor o igual que $numero2
+var_dump($numero1 >= $numero2);
+echo "<br/>";
+
+//* Operador menor o igual que $numero2
+var_dump($numero1 <= $numero2);
+echo "<br/>";
+
+//* Operador igual a $numero3
+var_dump($numero2 == $numero3);
+echo "<br/>";
+
+//* Operador igual a $numero3
+var_dump($numero2 == $numero4);
+echo "<br/>";
+
+//* Operador estrictamente igual a $numero4
+var_dump($numero2 === $numero4);
+echo "<br/>";
+
+//Un integer menor que, igual a, o mayor que cero cuando $a es respectivamente menor que, igual a, o mayor que $b.
+var_dump($a <=> $b);
+echo "<br/>";
+
+
+//todo Ejercicio Largo...
+
+$nombreCliente = "Campers Campuslands";
+
+//conocer extension de un string
+echo strlen($nombreCliente);
+var_dump($nombreCliente);
+
+//Eliminar espacios en blanco 
+$texto = trim($nombreCliente);
+echo strlen($nombreCliente);
+
+//Convertirlo a mayuscula
+echo strtoupper($nombreCliente);
+
+
+//Convertirlo a minuscula
+echo strtolower($nombreCliente);
+
+$mail1 = "correo@correo.com";
+$mail2 = "correo@correo.com";
+
+var_dump(strtolower($mail1) ===strtolower($mail2));
+echo str_replace('Juan','J',$nombreCliente);
+
+// Revisar si un str existe o no
+
+echo strpos($nombreCliente,"Pedro");
