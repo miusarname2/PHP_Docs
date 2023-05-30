@@ -124,3 +124,5 @@ echo str_replace('Juan','J',$nombreCliente);
 // Revisar si un str existe o no
 
 echo strpos($nombreCliente,"Pedro");
+
+//HOlamund
