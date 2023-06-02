@@ -1,5 +1,5 @@
 <?php
-$planetas=["Sol","Mercurio","Venus","Tierra","Marte","Jupiter","Saturno","Urano","Neptuno"];
+$planetas=[array("nombre"=>"Sol","Habitado"=>"Deshabitado"),"Mercurio","Venus","Tierra","Marte","Jupiter","Saturno","Urano","Neptuno"];
 
 if (is_numeric($_POST["Planet"]) ){
     $temp_toReturn=$planetas[intval($_POST["Planet"])];
