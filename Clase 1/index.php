@@ -557,3 +557,195 @@ array_walk($frutas, 'test_alter', 'fruta');
 echo "... y después:\n";
 
 array_walk($frutas, 'test_print');
+
+
+
+
+
+// clase 05/06/2023
+$nombre=0;    
+print_r(isset($nombre));
+print_r(empty($nombre));
+
+$lista = [];
+var_dump(isset($lista["nombre"]));
+var_dump(empty($lista["nombre"]));
+
+
+//! diferencia ciclo,bucle e iteración
+//* Ciclo
+// Se controla todo
+
+//* bucle
+// Se controla la condicion
+
+
+//* iteracion
+// No se controla nada
+
+switch ($variable) {
+    case 'value':
+        # code...
+        break;
+    
+    default:
+        # code...
+        break;
+};
+
+// if(true){
+
+// };
+
+// foreach ($variable as $key => $value) {
+//     # code...
+// }
+// $index = [];
+// for ($index = 0; $index < count($lista); $index++) {
+
+// }
+// while(true){
+
+// };
+
+// do{
+
+// }while(false);
+
+// $lista = [];
+// $lista["nombre2"] = "Pepito perez";
+
+// if(!isset($lista["nombre"])){
+//     $lista["nombre"] = "Miguel";
+// }
+// print_r($lista);
+
+
+
+//? Isset() y Empty()
+
+/**
+ * ! Definiciónes formal
+ * En PHP, isset() y empty() son dos funciones utilizadas para verificar si una variable o un elemento de
+ * un array tiene un valor definido o no. A pesar de que ambas funciones tienen objetivos similares, hay
+ * algunas diferencias clave entre ellas.
+ * La función isset() comprueba si una variable o un elemento de un array está definido y no es null.
+ * Esta función devuelve true si la variable o el elemento de array existe y tiene un valor, y false en caso
+ * contrario. Por ejemplo:
+ */
+
+$lista = [];
+$lista["nombre2"] = "Pepito perez";
+
+if(!isset($lista["nombre"])){
+    $lista["nombre"] = "Miguel";
+}
+print_r($lista);
+
+/**
+ *?  En la practica:
+ *todo isset()
+ * Verifica si la variable esta definida y tiene algo diferente de null
+ * 
+ *todo empty()
+ * Verifica si la variable esta definida 
+ */
+
+ //* Otra cosa -> in_array()
+ // Esta vaina verificar si existe una variable o si tiene algún dato almacenado también podemos buscar elementos en un arreglo con funciones. 
+ //* Ej
+
+ print_r(in_array('audifonos',$carrito));
+
+//* Ordenar
+
+$numeros=array(1,52,5,6,6,5,56,12,1,42,4,5,1,5,12,4,81,6,4897,1,67,12,8,1,475,1,785,1,58);
+sort($numero);// De menos a más
+rsort($numero);// De más a menos
+
+//? Estructuras de control
+
+/*
+todo Las estructuras de control más comunes en programación son:
+
+* Estructuras de control condicionales: 
+Como el condicional "if" que mencionamos anteriormente, y también el "switch". Estas estructuras permiten que el programa tome decisiones en función de si se cumple o no una determinada condición.
+
+* Estructuras de control de repetición: 
+También conocidas como bucles o ciclos, permiten que el programa repita una determinada acción un número de veces      eterminado o mientras se  cumpla una determinada condición. Entre los bucles más comunes se encuentran el "for", el "while" y el "do-while".
+
+* Estructuras de control de excepciones: 
+Permiten manejar errores o situaciones inesperadas que puedan ocurrir durante la ejecución del programa. Por ejemplo, las sentencias "try" y "catch" en Java son estructuras de control de excepciones que permiten manejar errores en tiempo de ejecución. 
+*/
+
+// Estructuras condicionales
+
+//? if
+
+// Lo mismo que en Js 
+
+if ($a > $b) {
+    echo "a es mayor que b";
+}
+
+//? Switch
+
+// Lo mismo que en Js
+
+
+if ($i == 0) {
+    echo "i es igual a 0";
+} elseif ($i == 1) {
+    echo "i es igual a 1";
+} elseif ($i == 2) {
+    echo "i es igual a 2";
+}
+
+switch ($i) {
+    case 0:
+        echo "i es igual a 0";
+        break;
+    case 1:
+        echo "i es igual a 1";
+        break;
+    case 2:
+        echo "i es igual a 2";
+        break;
+}
+
+
+// Estructuras repetitivas
+
+/**
+ * En la mayoría de los lenguajes de programación, existen tres tipos de estructuras repetitivas:
+* Bucle while: 
+** Permite repetir la ejecución de un bloque de código mientras se cumpla una condición.
+* Bucle do-while:
+** Similar al bucle while, pero garantiza que el bloque de código se ejecuta al menos una vez, independientemente de si se cumple o no la condición.
+* Bucle for:
+** Permite repetir la ejecución de un bloque de código un número fijo de veces,controlando el número de iteraciones mediante un contador.
+*/
+
+//? While
+
+while (true) {
+    echo "a";
+}
+
+//? For
+
+for ($i = 0; $i < 10; $i++) {
+    echo $i;
+}
+
+//? do-while
+
+do {
+    echo "a";
+} while (true);
+
+//? forEach
+
+foreach (range(0, 10) as $i) {
+    echo $i;
+}

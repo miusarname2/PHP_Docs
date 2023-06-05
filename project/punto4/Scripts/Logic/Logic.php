@@ -1,5 +1,5 @@
 <?php
-$planetas=[array("nombre"=>"sol","Habitado"=>"Deshabitado","habitable"=>false),array("nombre"=>"mercurio","Habitado"=>"Deshabitado","habitable"=>true),array("nombre"=>"venus","Habitado"=>"Deshabitado","habitable"=>false),array("nombre"=>"tierra","Habitado"=>"Deshabitado","habitable"=>true),array("nombre"=>"marte","Habitado"=>"Deshabitado","habitable"=>true),array("nombre"=>"jupiter","Habitado"=>"Deshabitado","habitable"=>false),array("nombre"=>"saturno","Habitado"=>"Deshabitado","habitable"=>false),array("nombre"=>"urano","Habitado"=>"Deshabitado","habitable"=>true),array("nombre"=>"neptuno","Habitado"=>"Deshabitado","habitable"=>true)];
+$planetas=[array("nombre"=>"sol","Habitado"=>"Deshabitado","habitable"=>false),array("nombre"=>"mercurio","Habitado"=>"Deshabitado","habitable"=>true,"gravedad"=>19/50),array("nombre"=>"venus","Habitado"=>"Deshabitado","habitable"=>false,"gravedad"=>91/100),array("nombre"=>"tierra","Habitado"=>"Deshabitado","habitable"=>true,"gravedad"=>100/100),array("nombre"=>"marte","Habitado"=>"Deshabitado","habitable"=>true,"gravedad"=>19/50),array("nombre"=>"jupiter","Habitado"=>"Deshabitado","habitable"=>false,"gravedad"=>3*43/2*5**2),array("nombre"=>"saturno","Habitado"=>"Deshabitado","habitable"=>false,"gravedad"=>107/(2**2)*(5**2)),array("nombre"=>"urano","Habitado"=>"Deshabitado","habitable"=>true,"gravedad"=>23/5**2),array("nombre"=>"neptuno","Habitado"=>"Deshabitado","habitable"=>true,"gravedad"=>7*17/(2**2)*(5**2))];
 
 
 if(isset($_POST["Planet"])){
@@ -64,6 +64,8 @@ if (is_numeric($_POST["Planet"]) ){
         }
     }
 }
+
+
 
 
 

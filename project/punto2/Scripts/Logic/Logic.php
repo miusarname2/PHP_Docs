@@ -1,5 +1,5 @@
 <?php
-$planetas=[array("nombre"=>"Sol","Habitado"=>"Deshabitado"),array("nombre"=>"Mercurio","Habitado"=>"Deshabitado"),array("nombre"=>"Venus","Habitado"=>"Deshabitado"),array("nombre"=>"Tierra","Habitado"=>"Deshabitado"),array("nombre"=>"Marte","Habitado"=>"Deshabitado"),array("nombre"=>"Jupiter","Habitado"=>"Deshabitado"),array("nombre"=>"Saturno","Habitado"=>"Deshabitado"),array("nombre"=>"Urano","Habitado"=>"Deshabitado"),array("nombre"=>"Neptuno","Habitado"=>"Deshabitado")];
+$planetas=[array("nombre"=>"sol","Habitado"=>"Deshabitado"),array("nombre"=>"mercurio","Habitado"=>"Deshabitado"),array("nombre"=>"venus","Habitado"=>"Deshabitado"),array("nombre"=>"tierra","Habitado"=>"Deshabitado"),array("nombre"=>"marte","Habitado"=>"Deshabitado"),array("nombre"=>"jupiter","Habitado"=>"Deshabitado"),array("nombre"=>"saturno","Habitado"=>"Deshabitado"),array("nombre"=>"urano","Habitado"=>"Deshabitado"),array("nombre"=>"neptuno","Habitado"=>"Deshabitado")];
 
 if (is_numeric($_POST["Planet"]) ){
     $temp_toReturn=$planetas[intval($_POST["Planet"])]["nombre"];
@@ -8,4 +8,15 @@ if (is_numeric($_POST["Planet"]) ){
     }else{
         header("location:../Views/BadRequest.php");
     }
-}else{}
+}elseif(is_numeric($_POST["Planet"]) == false){
+    $names = strtolower($_POST["Planet"]);
+     foreach ($planetas as $key => $planeta) {
+         if ($planeta["nombre"] == $names) {
+             header("location:../Views/Resultado.php?element=".$planeta["nombre"]."&id=".$key);
+             break;
+         }else{
+             header("location:../Views/BadRequest.php");
+         }
+     } 
+
+}
