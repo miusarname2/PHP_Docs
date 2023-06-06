@@ -749,3 +749,217 @@ do {
 foreach (range(0, 10) as $i) {
     echo $i;
 }
+
+
+// Clase de jun/6/2023
+
+//function saludar($nombre){
+//    return "Hola $nombre como estas ";
+//}
+
+//echo saludar("Oscar");
+
+
+//declare(strict_types=1);
+//function saludar(int $nombre): string{
+//return "Hola $nombre como estas ";
+//}
+
+//echo saludar(5);
+
+//? Null
+
+// Tengo pero nose 
+
+//? Vacio 
+
+// No tengo
+
+
+//? No es lo mismo que Void
+
+//declare(strict_types=1);
+//    function saludar(string $nombre): void{
+//        if($nombre=="Miguel"){
+//           return "Hola que mas";
+//        }else{
+//            return null;
+//        }
+//        
+//    }
+
+//    echo saludar('Pepito');
+
+//? mixed todo boteze
+
+// declare(strict_types=1);
+//     function saludar(mixed $nombre): void{
+//         if($nombre=="Miguel"){
+           
+//         }else{
+            
+//         }
+        
+//     }
+
+//     echo saludar('Pepito');
+
+
+//! Declaracion de funcion por variable
+
+//declare(strict_types=1);
+    // $fn = function():bool{
+    //     return true;
+    // };
+
+    // echo $fn();
+
+//! Usar una variable en php
+    // declare(strict_types=1);
+    // $nombre = "Miguel";
+
+    // $fn = function () use($nombre):string{
+    //     return $nombre;
+    // };
+
+    // echo $fn();
+
+    // $fn = function():bool{
+    //     return true;
+    // };
+
+    // echo $fn();
+
+//? Un let php
+    // declare(strict_types=1);
+    // $nombre = "Miguel";
+   
+    // $fn = function () use(&$nombre):string{
+    //     $nombre = "Andres";
+    //     return $nombre;
+    // };
+
+    // echo $fn();
+    // echo $$nombre;
+
+    // $fn = function():bool{
+    //     return true;
+    // };
+
+    // echo $fn();
+
+    //todo obtener argumentos sin crearlos
+    // function datos():void{
+    //     var_dump(func_get_args());
+    // };
+
+    // datos("miguel",23,true);
+
+
+    //todo obtener UN argumentO sin crearlo
+    // function datos():void{
+    //     var_dump(func_get_arg(2));
+    // };
+
+    // datos("miguel",23,true);
+
+    //Obtener ..args
+    // function datos():void{
+    //     var_dump(...func_get_args());
+    // };
+
+    // datos(["nombre"=>"miguel", "edad"=> 23, "casa"=> true]);
+
+    //todo Extraer datos de array
+
+    // function datos():void{
+    //     extract(...func_get_args());
+    //     echo $nombre;
+    //     // var_dump();
+    // };
+
+    // datos(["nombre"=>"miguel", "edad"=> 23, "casa"=> true]);
+
+    //todo verificar existencia de data
+
+    // function datos():void{
+    //     extract(...func_get_args());
+    //     if(isset($edad)){
+    //         echo $edad;
+    //     }
+    //     // var_dump();
+    // };
+
+    // datos(["nombre"=> (string) "miguel", "edad"=> (int) 23, "casa"=> (bool) true]);
+
+    //? Documentacion del día
+
+    //Funciones
+
+    /**
+     * ! Definicion formal: 
+     * Una función es un concepto fundamental en matemáticas y programación. En matemáticas, una función es una relación entre un conjunto de entradas, llamado dominio, y un conjunto de salidas, llamado codominio. Cada elemento del dominio se relaciona con exactamente un elemento del codominio a través de la función.
+     * 
+     * En términos más formales, una función es una regla o un conjunto de instrucciones que asigna cada elemento en el dominio a un único elemento en el codominio. La notación matemática típica para denotar una función es f(x), donde f es el nombre de la función y x es la variable de entrada.
+     * 
+     * En programación, una función es un bloque de código que realiza una tarea específica y puede ser llamado desde diferentes partes de un programa. Proporciona una forma de organizar y reutilizar el código al dividir un programa en fragmentos más pequeños y manejables.
+     * 
+     * En resumen, tanto en matemáticas como en programación, una función es una entidad que toma una o más entradas y produce una salida determinada de acuerdo con una regla o un conjunto de instrucciones específicas.
+     * 
+     *? Definicion practica
+     *  
+     * Una función es una relación entre un conjunto de entradas y un conjunto de salidas.
+     * 
+     * 
+     *todo Estructura basica :
+     *   
+     *  function Identificador ([p1],[p2]...){
+     *       Expresiones.....
+     *   }
+     * 
+     *? Division:
+     *  Se podrian dividir en "funciones que retornar" y "funciones que no retornan" o ":()" y ":void"
+     * 
+     *todo Ejempo de funciones que retornan  
+     */
+
+     function Saludar():String{
+        return "Hola querido....";
+     }
+
+     /**
+      *todo Funciones NO que retornar
+      */
+
+      function SaludarSinRetornar():Void{
+        echo "Hola querido";
+     }
+
+
+     /**
+      *? Investigación sobre file_get_contents()  
+      *todo Definicion formal corta(fuente: ChatGPT)
+      * La función file_get_contents() en PHP se utiliza para leer el contenido completo de un archivo y devolverlo como una cadena. 
+      *todo Definicion formal 
+      * Esta función es similar a file(), excepto que file_get_contents() devuelve el fichero a un string, comenzando por el offset especificado hasta maxlen bytes. Si falla, file_get_contents() devolverá false.
+      *
+      * file_get_contents() es la manera preferida de transmitir el contenido de un fichero a una cadena. Para mejorar el rendimiento, utiliza técnicas de mapeado de memoria si sistema operativo lo admite..
+      *? Aquí tienes una descripción de los parámetros y el valor de retorno de esta función:
+      */ 
+
+
+    //   file_get_contents(
+    //     string $filename,
+    //     bool $use_include_path = false,
+    //     ?resource $context = null,
+    //     int $offset = 0,
+    //     ?int $length = null
+    // ): string|false
+    
+    //? Ejemplo1 de su uso:
+
+    $homepage = file_get_contents('http://www.example.com/');
+    echo $homepage;
+
+    
+
