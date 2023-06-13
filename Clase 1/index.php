@@ -961,5 +961,183 @@ foreach (range(0, 10) as $i) {
     $homepage = file_get_contents('http://www.example.com/');
     echo $homepage;
 
+// Clase 7/jun/2023
+
+$credenciales["http"] = [];
+    $credenciales["http"]["method"] = "GET";
+
+    $config = stream_context_create($credenciales);
+
+
+    $_DATA = file_get_contents("https://pokeapi.co/api/v2/pokemon/ditto", false, $config);
+    print_r($_DATA);
     
 
+//header('Content-Type: application/json');
+// header('Content-Type: application/json');
+
+//     $credenciales["http"]["method"] = "GET";
+//     $config = stream_context_create($credenciales);
+
+
+//     $_DATA = file_get_contents("https://pokeapi.co/api/v2/pokemon/ditto", false, $config);
+//     print_r(json_decode($_DATA));
+
+// header('Content-Type: application/json');
+
+//     $credenciales["http"]["method"] = "POST";
+//     $credenciales["http"]["header"]["Content-Type"] = "application/json";
+//     $config = stream_context_create($credenciales);
+
+
+//     $_DATA = file_get_contents("https://6480e3fef061e6ec4d4a0194.mockapi.io/informacion", false, $config);
+//     print_r(json_decode($_DATA));
+
+
+
+// header('Content-Type: application/json');
+
+//     $credenciales["http"]["method"] = "POST";
+//     $credenciales["http"]["headers"]["Content-Type"] = "application/json";
+//     $data = [
+//         "cc"=>"123",
+//         "nombre"=> "Miguel",
+//         "apelldio"=> "Castro",
+//         "edad"=> 23
+//     ];
+//     // $data = http_build_query($data);
+//     $credenciales["http"]["content"] = $data;
+//     $config = stream_context_create($credenciales);
+
+//     $_DATA = file_get_contents("https://6480e3fef061e6ec4d4a0194.mockapi.io/informacion", false, $config);
+//     print_r($_DATA);
+
+
+
+
+// $credenciales["http"]["method"] = "POST";
+// $credenciales["http"]["header"] = "Content-type: application/json";
+// $data = [
+//     "nombre"=> "Miguel",
+//     "apelldio"=> "Castro",
+//     "edad"=> 23
+// ];
+// $data = json_encode($data);
+// $credenciales["http"]["content"] = $data;
+// $config = stream_context_create($credenciales);
+
+// $_DATA = file_get_contents("https://6480e3fef061e6ec4d4a0194.mockapi.io/informacion", false, $config);
+// print_r($_DATA);
+
+
+
+
+// $credenciales["http"]["method"] = "POST";
+// $credenciales["http"]["header"] = "Content-type: application/json";
+// $data = [
+//     "cc"=>"123",
+//     "nombre"=> "Miguel",
+//     "apelldio"=> "Castro",
+//     "edad"=> 23
+// ];
+// $data = json_encode($data);
+// $credenciales["http"]["content"] = $data;
+// $config = stream_context_create($credenciales);
+
+// $_DATA = file_get_contents("https://6480e3fef061e6ec4d4a0194.mockapi.io/informacion", false, $config);
+// print_r($_DATA);
+
+
+
+// Jun / 9 / 2023
+
+// class getInstance{
+	
+// 	public static $instance;
+	
+// 	// public getInstance(){
+// 	//   $arg = func_get_arg();
+// 	//   self::$instance = (self::$instance insteadOf self ? self::$instance : new static(...$arg));
+// 	// }
+
+//     public static function getInstance(){
+//         $arg = func_get_args();
+//         self::$instance = (self::$instance insteadOf self) ? self::$instance : new static(...$arg);
+//     }
+// }
+
+// jun / 13 / 2023
+
+    //declare(strict_types=1);
+
+class Humano{
+    // public $color;
+    // private $huella;
+    // protected $alias;
+
+    // public function __construct($color, $huella, $alias){
+    //         $this->color = $color;
+    //         $this->huella = $huella;
+    //         $this->alias = $alias;
+    //     }
+    protected $saludar;
+
+        
+        public function __construct(public $color, private $huella, protected $alias){}
+
+        protected function saludar(){
+            return "Hola mi alias es:".$this->alias;
+        }
+
+        //Metodo magico en php
+        public function __set(string $name, mixed $value){
+            $this->{$name} = $value;
+        }
+
+        public function __get(string $name){
+            //return (method_exists($this, $name)) ? $this->{$name}() : $this->{$name};
+            if(method_exists($this, $name) && (property_exists($this, $name)) ){
+                return array("FuncSaludar"=>$this->{$name}(),"saludar"=>$this->{$name});
+            }else if(property_exists($this, $name)){
+                return $this->{$name};
+            }else{
+                return ["error"=> "no existe esa entidad en la clase ".__CLASS__];
+            }
+        }
+
+
+
+        
+
+        
+
+        
+}
+
+// $obj = new Humano("Negro",12.555,"HOlaMudno");
+// print_r($obj);
+
+$extruct = array(
+        "huella"=> 12.15, 
+        "color"=> "Piel",  
+        "alias"=>"Trainer"
+    ); 
+    $obj = new humano(...$extruct);
+    print_r($obj);
+
+        $obj->__set("alias", "TRAINER");
+    print_r($obj);
+
+    print_r($obj->__get("huella"));
+
+    
+    print_r($obj->__get("aaaa"));
+
+    $obj2 = new humano(...$extruct);
+    $obj2->__set("saludar", "Hola mundo");
+
+    // print_r($obj);
+
+    // print_r($obj->__get("huella"));
+
+    print_r($obj2->__get("saludar"));
