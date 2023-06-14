@@ -1141,3 +1141,149 @@ $extruct = array(
     // print_r($obj->__get("huella"));
 
     print_r($obj2->__get("saludar"));
+
+
+    //Anotaciones y resumen hasta el punto de Herencias
+
+
+/**
+ *? La programación orientada a objetos (POO) es un paradigma de programación que se basa en el concepto de "objetos".
+ ** Los objetos son entidades que representan conceptos del mundo real y pueden tener propiedades (atributos) y realizar acciones (métodos).
+ **
+ ** En la programación orientada a objetos, los objetos se crean a partir de clases, que son plantillas o moldes que definen las propiedades
+ ** y comportamientos de los objetos que se crean a partir de ellas.
+ **
+ * Los principales conceptos de la programación orientada a objetos son:
+ ** - Clase: Es una plantilla que describe las características y comportamientos de los objetos que se pueden crear a partir de ella.
+ ** - Objeto: Es una instancia de una clase. Representa un individuo o entidad específica con sus propias propiedades y comportamientos.
+ ** - Atributos: Son las propiedades o características de un objeto. Definen el estado de un objeto y se representan mediante variables en la clase.
+ ** - Métodos: Son las acciones o comportamientos que un objeto puede realizar. Representan las operaciones que se pueden hacer con un objeto y se definen como funciones en la clase.
+ ** - Encapsulación: Es el principio que establece que los atributos y métodos relacionados deben agruparse en una clase para ocultar los detalles internos y exponer solo una interfaz pública.
+ ** - Herencia: Es un mecanismo que permite crear nuevas clases basadas en clases existentes. La clase base se denomina "clase padre" o "superclase", y la clase derivada se llama "clase hija" o "subclase". La herencia permite la reutilización de código y la creación de jerarquías de clases.
+ ** - Polimorfismo: Es la capacidad de un objeto de tomar diferentes formas o comportarse de diferentes maneras según el contexto. Permite utilizar una interfaz común para objetos de diferentes clases y proporciona flexibilidad y extensibilidad en el diseño de programas.
+ **
+ * La programación orientada a objetos permite organizar y modularizar el código de manera clara y estructurada, facilitando el desarrollo, la mantenibilidad y la reutilización del código. Es ampliamente utilizado en lenguajes como Java, C++, Python, PHP, entre otros.
+ */
+
+/**
+ *? Modificadores de acceso en PHP.
+ ** Los modificadores de acceso son palabras clave utilizadas en la programación orientada a objetos para controlar la visibilidad y el acceso a los miembros (atributos y métodos) de una clase.
+ ** En PHP, hay tres modificadores de acceso:
+ ** - public: Los miembros public son accesibles desde cualquier lugar, ya sea desde dentro de la clase, desde las clases heredadas o desde fuera de la clase. Son visibles para todos.
+ ** - private: Los miembros private solo son accesibles desde dentro de la misma clase en la que se definen. No pueden ser accedidos desde fuera de la clase, ni siquiera por las clases heredadas.
+ ** - protected: Los miembros protected son accesibles desde dentro de la misma clase y desde las clases heredadas (subclases). No pueden ser accedidos directamente desde fuera de la clase.
+ ** Es importante elegir adecuadamente los modificadores de acceso según las necesidades de diseño y la seguridad de la aplicación. Un buen diseño de clases utiliza el encapsulamiento y establece un acceso controlado a los miembros, evitando el acceso directo a los datos internos desde fuera de la clase y fomentando el uso de métodos para su manipulación.
+ */
+class Persona {
+    public $nombre;        // Acceso público
+    private $edad;         // Acceso privado
+    protected $direccion;  // Acceso protegido
+    
+    public function __construct($nombre, $edad, $direccion) {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+        $this->direccion = $direccion;
+    }
+    
+    public function saludar() {
+        echo "Hola, mi nombre es " . $this->nombre . ".";
+    }
+    
+    private function obtenerEdad() {
+        return $this->edad;
+    }
+    
+    protected function obtenerDireccion() {
+        return $this->direccion;
+    }
+}
+
+$persona = new Persona("Juan", 25, "Calle Principal");
+echo $persona->nombre;            // Acceso público: se puede acceder desde fuera de la clase
+//echo $persona->edad;            // Acceso privado: genera un error, no se puede acceder desde fuera de la clase
+//echo $persona->direccion;       // Acceso protegido: genera un error, no se puede acceder desde fuera de la clase
+
+$persona->saludar();               // Método público: se puede llamar desde fuera de la clase
+//$persona->obtenerEdad();         // Método privado: genera un error, no se puede llamar desde fuera de la clase
+//$persona->obtenerDireccion();    // Método protegido: genera un error, no se puede llamar desde fuera de la clase
+
+
+/**
+ *? Clases en PHP.
+ ** Una clase en PHP es una plantilla que permite definir las características y comportamientos de los objetos que se pueden crear a partir de ella.
+ ** Para crear una instancia de una clase se utiliza la palabra clave "new" seguida del nombre de la clase y paréntesis.
+ ** Los atributos de una clase se definen utilizando variables y pueden tener modificadores de acceso.
+ ** Los métodos de una clase se definen utilizando funciones y también pueden tener modificadores de acceso.
+ */
+
+class Persona {
+    private $nombre;
+    private $edad;
+    
+    public function __construct($nombre, $edad) {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+    }
+    
+    public function saludar() {
+        echo "Hola, mi nombre es " . $this->nombre . " y tengo " . $this->edad . " años.";
+    }
+}
+
+$persona = new Persona("Juan", 25);
+$persona->saludar();
+
+
+/**
+ *? Métodos estáticos en PHP.
+ ** Un método estático en PHP pertenece a la clase en sí y no a una instancia específica de la clase.
+ ** Algunas características importantes de los métodos estáticos son:
+ ** - No requieren una instancia: Se pueden invocar directamente desde la clase utilizando la sintaxis Clase::metodoEstatico().
+ ** - No pueden acceder a propiedades de instancia: No pueden acceder directamente a las propiedades de instancia de la clase, solo a propiedades estáticas.
+ ** - No pueden utilizar $this: No se puede utilizar la palabra clave $this en un método estático.
+ ** - Útiles para utilidades compartidas: Son útiles para definir funciones o utilidades que no dependen del estado de una instancia específica.
+ */
+
+ class MathUtils {
+    public static function sum($a, $b) {
+        return $a + $b;
+    }
+}
+
+$result = MathUtils::sum(2, 3);
+echo $result; // Output: 5
+
+
+/**
+ *? Herencia en PHP.
+ ** La herencia en PHP permite crear nuevas clases basadas en clases existentes y extender su funcionalidad.
+ ** La clase existente se conoce como clase base o clase padre, mientras que la nueva clase creada se llama clase derivada o clase hija.
+ ** Algunos conceptos importantes relacionados con la herencia son:
+ ** - Clase base / Clase padre: Es la clase original de la cual se deriva una nueva clase. Define los atributos y métodos básicos que serán heredados por las clases derivadas.
+ ** - Clase derivada / Clase hija: Es la nueva clase creada que se basa en la clase base. Hereda los atributos y métodos de la clase base y puede agregar nuevos atributos y métodos, así como modificar o ampliar los existentes.
+ ** - Herencia simple y herencia múltiple: La herencia simple se refiere a la relación en la que una clase derivada hereda de una sola clase base. Por otro lado, la herencia múltiple se refiere a la relación en la que una clase derivada hereda de múltiples clases base. No todos los lenguajes de programación admiten la herencia múltiple.
+ ** - Polimorfismo: El polimorfismo es la capacidad de un objeto de una clase derivada para ser tratado como un objeto de su clase base.
+ */
+
+ class Animal {
+    protected $nombre;
+    
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+    }
+    
+    public function comer() {
+        echo $this->nombre . " está comiendo.";
+    }
+}
+
+class Perro extends Animal {
+    public function ladrar() {
+        echo $this->nombre . " está ladrando.";
+    }
+}
+
+$perro = new Perro("Max");
+$perro->comer(); // Output: Max está comiendo.
+$perro->ladrar(); // Output: Max está ladrando.
+?>
