@@ -38,7 +38,13 @@ class CuentaAhorros extends CuentaBancaria{
     }
 }
 
-$cuentaA=new CuentaCorriente(5000);
-print_r($cuentaA->retirar(1500));
+
+
+$_DATA= json_decode(file_get_contents('php://input'),true);
+
+$cuentaA=new CuentaCorriente($_DATA['saldo']);
+print_r("Haz retirado ".$_DATA['monto']. " y te queda ".$cuentaA->retirar($_DATA['monto']));
+
+
 
 

@@ -1610,4 +1610,8 @@ $reproductor = new ReproductorAS;
 $reproductor->play(); // Devuelve: Escuchando música
 $reproductor->playDeJuego(); // Devuelve: Jugando a un juego
 
+// 15/06/2023
 
+$_DATA= json_decode(file_get_contents('php://input'),true);
+
+print_r($_DATA);
