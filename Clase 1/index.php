@@ -1615,3 +1615,398 @@ $reproductor->playDeJuego(); // Devuelve: Jugando a un juego
 $_DATA= json_decode(file_get_contents('php://input'),true);
 
 print_r($_DATA);
+
+// Anotaciones desde el 15/06/2023 hasta hoy(Parcialmente)
+
+ /**
+* 2.6. Polimorfismo:
+*El polimorfismo en la POO permite tratar objetos de diferentes clases de manera uniforme utilizando una interfaz común. Se logra a través de la herencia, donde una clase hija hereda de una clase padre y puede redefinir o sobrescribir los métodos heredados. Los objetos de las clases hijas pueden ser tratados como objetos de la clase padre.*/
+
+// Clase padre
+class Animal {
+    protected $nombre;
+
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function hacerSonido() {
+        return "El animal hace un sonido.";
+    }
+}
+
+// Clase hija que hereda de Animal
+class Perro extends Animal {
+    public function hacerSonido() {
+        return "El perro ladra.";
+    }
+}
+
+// Clase hija que hereda de Animal
+class Gato extends Animal {
+    public function hacerSonido() {
+        return "El gato maulla.";
+    }
+}
+
+// Función que acepta un objeto de tipo Animal
+function hacerSonidoAnimal(Animal $animal) {
+    echo $animal->hacerSonido() . "\n";
+}
+
+// Crear instancias de las clases hijas
+$perro = new Perro("Firulais");
+$gato = new Gato("Pelusa");
+
+// Llamar a la función hacerSonidoAnimal con los objetos de las clases hijas
+hacerSonidoAnimal($perro);
+hacerSonidoAnimal($gato);
+
+
+ /**
+*2.7. Autoload:
+*El autoload en PHP es una técnica que carga automáticamente las clases cuando son necesarias, sin tener que incluir manualmente los archivos de clase en cada punto del código. Se basa en la función spl_autoload_register(), que permite registrar funciones de autoload que se ejecutan cuando se intenta utilizar una clase no cargada.*/
+
+
+// Define una función de autoload que cargará automáticamente las clases
+function miAutoload($nombreClase) {
+    // Ruta base donde se encuentran las clases
+    $rutaBase = 'ruta/del/proyecto/clases/';
+
+    // Convierte el nombre de la clase en una ruta de archivo
+    $rutaArchivo = $rutaBase . $nombreClase . '.php';
+
+    // Comprueba si el archivo de la clase existe y lo incluye
+    if (file_exists($rutaArchivo)) {
+        require_once $rutaArchivo;
+    }
+}
+
+// Registra la función de autoload
+spl_autoload_register('miAutoload');
+
+// Ahora puedes utilizar las clases sin tener que incluir manualmente los archivos
+$miObjeto = new MiClase();
+$otroObjeto = new OtraClase();
+
+
+
+
+ /**
+*2.8. Namespaces en PHP:
+*Los namespaces en PHP se utilizan para definir espacios de nombres y evitar conflictos de nombres entre clases, funciones y constantes. La palabra clave use se utiliza para importar elementos desde otros espacios de nombres y proporcionar rutas cortas para acceder a ellos.*/
+
+
+
+namespace MiProyecto;
+
+// Definición de una clase dentro del namespace
+class MiClase
+{
+    public function saludar()
+    {
+        echo "Hola desde MiProyecto\MiClase";
+    }
+}
+
+namespace OtroProyecto;
+
+// Importar la clase MiClase del namespace MiProyecto
+use MiProyecto\MiClase;
+
+// Crear una instancia de la clase MiClase
+$miObjeto = new MiClase();
+
+// Acceder al método saludar de la clase MiClase
+$miObjeto->saludar();
+
+
+//20
+
+ /**
+*2.9. Composer:
+*Composer es un administrador de dependencias para PHP que facilita la instalación de librerías de terceros en un proyecto PHP. Se utiliza un archivo composer.json para especificar las dependencias y el comando composer update para instalarlas.
+*/
+
+
+// Incluir el autoloader de Composer
+require 'vendor/autoload.php';
+
+// Usar una dependencia instalada a través de Composer
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+// Crear un nuevo registro de log
+$log = new Logger('myApp');
+$log->pushHandler(new StreamHandler('logs/app.log', Logger::WARNING));
+
+// Escribir un mensaje de log
+$log->warning('Este es un mensaje de advertencia');
+
+ /**
+*3.1. Integración de PHP con Bases de datos relacionales (Mysql):
+*Esta sección aborda la integración de PHP con bases de datos relacionales, como MySQL. Se mencionan las características de las bases de datos relacionales, como la organización de la información en tablas y el uso de SQL para interactuar con los datos.
+*/
+
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "tu_usuario";
+$password = "tu_contraseña";
+$database = "nombre_de_la_base_de_datos";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+// Verificar la conexión
+if (!$conn) {
+    die("Error al conectar con la base de datos: " . mysqli_connect_error());
+}
+
+// Consulta SQL
+$sql = "SELECT * FROM tabla";
+
+// Ejecutar la consulta
+$result = mysqli_query($conn, $sql);
+
+// Verificar si hay resultados
+if (mysqli_num_rows($result) > 0) {
+    // Recorrer los resultados y mostrar los datos
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "ID: " . $row["id"] . ", Nombre: " . $row["nombre"] . ", Email: " . $row["email"] . "<br>";
+    }
+} else {
+    echo "No se encontraron resultados.";
+}
+
+// Cerrar la conexión
+mysqli_close($conn);
+
+ /**
+*3.1.1. Bases de datos relacionales:
+*Se explican las bases de datos relacionales, su estructura basada en tablas y la relación entre ellas utilizando claves primarias y claves foráneas.
+*/
+
+ /**
+*3.1.2. Entidades y Atributos:
+*Se define qué son las entidades en el contexto de una base de datos y se mencionan algunos ejemplos de entidades y atributos.
+*/
+
+// Definición de una entidad "Usuario" con algunos atributos
+class Usuario {
+    private $id;
+    private $nombre;
+    private $email;
+    
+    // Constructor de la clase Usuario
+    public function __construct($id, $nombre, $email) {
+        $this->id = $id;
+        $this->nombre = $nombre;
+        $this->email = $email;
+    }
+    
+    // Métodos getter y setter para los atributos de la entidad Usuario
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function setId($id) {
+        $this->id = $id;
+    }
+    
+    public function getNombre() {
+        return $this->nombre;
+    }
+    
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
+    }
+    
+    public function getEmail() {
+        return $this->email;
+    }
+    
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+}
+
+// Creación de una instancia de la entidad Usuario
+$usuario = new Usuario(1, "John Doe", "johndoe@example.com");
+
+// Acceso a los atributos de la entidad Usuario
+echo "ID: " . $usuario->getId() . "<br>";
+echo "Nombre: " . $usuario->getNombre() . "<br>";
+echo "Email: " . $usuario->getEmail() . "<br>";
+
+ /**
+*3.1.3. Identificadores Únicos:
+*Se explica el concepto de identificadores únicos (claves primarias) en las bases de datos, su función de garantizar la unicidad de los registros y su uso en la indexación y las relaciones entre tablas.
+*/
+
+// Configuración de la conexión a la base de datos
+$servername = "localhost";
+$username = "usuario";
+$password = "contraseña";
+$dbname = "nombre_base_de_datos";
+
+// Crear una nueva conexión a la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar si hay errores en la conexión
+if ($conn->connect_error) {
+    die("Error en la conexión: " . $conn->connect_error);
+}
+
+// Crear una tabla llamada "usuarios" con un identificador único llamado "id"
+$sql = "CREATE TABLE usuarios (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Tabla 'usuarios' creada exitosamente.";
+} else {
+    echo "Error al crear la tabla: " . $conn->error;
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
+
+ /**
+*3.1.4. Relaciones:
+*Se describe cómo se establecen las relaciones entre tablas en una base de datos relacional, y se mencionan las reglas de negocio que definen esas relaciones.
+*/
+
+// Definición de las tablas
+$tablaUsuarios = [
+    'id' => 'INT',
+    'nombre' => 'VARCHAR',
+    // ...
+];
+
+$tablaPedidos = [
+    'id' => 'INT',
+    'usuario_id' => 'INT',
+    'producto' => 'VARCHAR',
+    // ...
+];
+
+// Establecimiento de la relación entre tablas
+$relacionUsuariosPedidos = [
+    'tabla_padre' => 'usuarios',
+    'clave_primaria_padre' => 'id',
+    'tabla_hija' => 'pedidos',
+    'clave_foranea_hija' => 'usuario_id',
+    // ...
+];
+
+// Reglas de negocio que definen las relaciones
+$reglasNegocio = [
+    'usuarios' => [
+        'validaciones' => [
+            // ...
+        ],
+        // ...
+    ],
+    'pedidos' => [
+        'validaciones' => [
+            // ...
+        ],
+        // ...
+    ],
+    // ...
+];
+
+// Ejemplo de uso de la estructura de datos
+$idUsuario = 1;
+$nombreUsuario = 'John Doe';
+
+$consultaInsertarUsuario = "INSERT INTO usuarios (id, nombre) VALUES ($idUsuario, '$nombreUsuario')";
+// Ejecutar consulta para insertar el usuario en la tabla usuarios
+
+$idPedido = 1;
+$productoPedido = 'Camisa';
+
+$consultaInsertarPedido = "INSERT INTO pedidos (id, usuario_id, producto) VALUES ($idPedido, $idUsuario, '$productoPedido')";
+// Ejecutar consulta para insertar el pedido en la tabla pedidos
+
+
+ /**
+*3.1.5. Clave ajena (Foránea):
+*Se explica el concepto de claves foráneas (claves externas) y cómo se utilizan para establecer relaciones entre tablas en una base de datos relacional.
+*/
+
+
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "usuario";
+$password = "contraseña";
+$dbname = "basedatos";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Conexión exitosa";
+
+    // Crear la tabla de Usuarios
+    $sql = "CREATE TABLE Usuarios (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(50) NOT NULL,
+        email VARCHAR(50) NOT NULL
+    )";
+    $conn->exec($sql);
+    echo "Tabla Usuarios creada correctamente";
+
+    // Crear la tabla de Pedidos
+    $sql = "CREATE TABLE Pedidos (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        producto VARCHAR(50) NOT NULL,
+        usuario_id INT(6) UNSIGNED,
+        FOREIGN KEY (usuario_id) REFERENCES Usuarios(id)
+    )";
+    $conn->exec($sql);
+    echo "Tabla Pedidos creada correctamente";
+} catch(PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
+}
+
+// Cerrar la conexión
+$conn = null;
+
+
+
+ /**
+*3.1.6. Normalización de bases de datos:
+*Se menciona la normalización de bases de datos como un proceso de diseño que se utiliza para organizar y estructurar las tablas de una base de datos de manera eficiente y libre de redundancias. Se hace referencia a las formas normales establecidas por Edgar Codd. 
+*/
+
+
+
+// Configuración de la base de datos
+$host = 'localhost';
+$dbname = 'nombre_base_de_datos';
+$user = 'nombre_usuario';
+$password = 'contraseña';
+
+try {
+    // Conexión a la base de datos usando PDO
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Consulta SQL
+    $sql = "SELECT * FROM nombre_tabla";
+    
+    // Ejecutar la consulta y obtener los resultados
+    $stmt = $pdo->query($sql);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Mostrar los resultados
+    foreach ($results as $row) {
+        echo "ID: " . $row['id'] . "<br>";
+        echo "Nombre: " . $row['nombre'] . "<br>";
+        echo "Apellido: " . $row['apellido'] . "<br>";
+        echo "<br>";
+    }
+} catch (PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
+}
