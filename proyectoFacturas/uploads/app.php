@@ -19,7 +19,6 @@
 
     spl_autoload_register('autoload');
 
-    new \app\user\usuario();
-    
+    print_r(\app\details\detalle::getInstance(["nombre"=>"Oscar","edad"=>150]));
 
 ?>
