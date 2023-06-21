@@ -10,11 +10,12 @@
                 }catch(\Throwable $e){
                     return $e->getMessage();
             }
+        }
             return self::$getInstance;
         }
 
     }
-}
+
     function autoload($e){ 
         $carpeta = (array) [
             dirname(__DIR__)."/scripts/clients",
