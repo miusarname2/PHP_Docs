@@ -1744,7 +1744,7 @@ $log->pushHandler(new StreamHandler('logs/app.log', Logger::WARNING));
 $log->warning('Este es un mensaje de advertencia');
 
  /**
-*3.1. Integración de PHP con Bases de datos relacionales (Mysql):
+* Integración de PHP con Bases de datos relacionales (Mysql):
 *Esta sección aborda la integración de PHP con bases de datos relacionales, como MySQL. Se mencionan las características de las bases de datos relacionales, como la organización de la información en tablas y el uso de SQL para interactuar con los datos.
 */
 
@@ -1781,12 +1781,12 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 
  /**
-*3.1.1. Bases de datos relacionales:
+* Bases de datos relacionales:
 *Se explican las bases de datos relacionales, su estructura basada en tablas y la relación entre ellas utilizando claves primarias y claves foráneas.
 */
 
  /**
-*3.1.2. Entidades y Atributos:
+* Entidades y Atributos:
 *Se define qué son las entidades en el contexto de una base de datos y se mencionan algunos ejemplos de entidades y atributos.
 */
 
@@ -1838,7 +1838,7 @@ echo "Nombre: " . $usuario->getNombre() . "<br>";
 echo "Email: " . $usuario->getEmail() . "<br>";
 
  /**
-*3.1.3. Identificadores Únicos:
+* Identificadores Únicos:
 *Se explica el concepto de identificadores únicos (claves primarias) en las bases de datos, su función de garantizar la unicidad de los registros y su uso en la indexación y las relaciones entre tablas.
 */
 
@@ -1873,7 +1873,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
  /**
-*3.1.4. Relaciones:
+* Relaciones:
 *Se describe cómo se establecen las relaciones entre tablas en una base de datos relacional, y se mencionan las reglas de negocio que definen esas relaciones.
 */
 
@@ -1932,7 +1932,7 @@ $consultaInsertarPedido = "INSERT INTO pedidos (id, usuario_id, producto) VALUES
 
 
  /**
-*3.1.5. Clave ajena (Foránea):
+* Clave ajena (Foránea):
 *Se explica el concepto de claves foráneas (claves externas) y cómo se utilizan para establecer relaciones entre tablas en una base de datos relacional.
 */
 
@@ -1976,7 +1976,7 @@ $conn = null;
 
 
  /**
-*3.1.6. Normalización de bases de datos:
+* Normalización de bases de datos:
 *Se menciona la normalización de bases de datos como un proceso de diseño que se utiliza para organizar y estructurar las tablas de una base de datos de manera eficiente y libre de redundancias. Se hace referencia a las formas normales establecidas por Edgar Codd. 
 */
 
