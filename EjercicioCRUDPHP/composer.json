@@ -1,0 +1,18 @@
+{
+    "name": "apolt01-013/ejercicio-crudphp",
+    "description": "Un CRUD con mockapi con php creando URIs",
+    "autoload": {
+        "psr-4": {
+            "Connection\\": "./Scripts"
+        }
+    },
+    "authors": [
+        {
+            "name": "miusarname",
+            "email": "oscarm.alvarezg@gmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "~1.6"
+    }
+}
