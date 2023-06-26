@@ -2,6 +2,8 @@
 require "./vendor/autoload.php";
 // Create Router instance
 $router = new \Bramus\Router\Router();
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $router->get('/get', function() {
     $conect =  new \Apps\connect();
