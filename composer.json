@@ -1,0 +1,17 @@
+{
+    "name": "apolt01-013/php_docs",
+    "description": "Conexion a base de datos",
+    "license": "LTS",
+    "autoload": {
+        "psr-4": {
+            "Apolt01013\\PhpDocs\\": "Scripts/"
+        }
+    },
+    "authors": [
+        {
+            "name": "miusarname",
+            "email": "oscarm.alvarezg@gmail.com"
+        }
+    ],
+    "require": {}
+}
